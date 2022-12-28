@@ -134,12 +134,14 @@ setInterval(function () {
 }, 5000);
 
 // Change portfolio content after clicking on portfolio list
-
-let portfolioBox = Array.from(document.querySelectorAll('.portfolio-content .images-container')),
+let portfolio = document.querySelector('.portfolio-content'),
+    portfolioImage = document.querySelector('.images-container'),
+    portfolioBox = Array.from(document.querySelectorAll('.portfolio-content .images-container')),
     nbrBoxes = portfolioBox.length,
     currentItem = 1,
     portfolioList = document.querySelector('.list'),
     portfolioItem = Array.from(document.querySelectorAll('.list li'));
+portfolio.style.height = `${portfolioImage.offsetHeight}px`;
 check();
 for (i = 0; i < nbrBoxes; i++) {
     portfolioItem[i].setAttribute('item-index', i + 1);
