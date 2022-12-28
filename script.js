@@ -141,7 +141,7 @@ let portfolio = document.querySelector('.portfolio-content'),
     currentItem = 1,
     portfolioList = document.querySelector('.list'),
     portfolioItem = Array.from(document.querySelectorAll('.list li'));
-portfolio.style.height = `${portfolioImage.offsetHeight}px`;
+portfolio.style.height = portfolioImage.offsetHeight.toSting() + 'px';
 check();
 for (i = 0; i < nbrBoxes; i++) {
     portfolioItem[i].setAttribute('item-index', i + 1);
