@@ -317,8 +317,16 @@ header .form {
     border-left: none !important;
     color: var(--main-color) !important;
     z-index: 10;
-    top: 55px !important;
-    right: 335px !important;
+    right: 425px !important;
+
+}
+
+@media(max-width:767px) {
+    .new-search-btn {
+        top: 55px !important;
+        right: 335px !important;
+
+    }
 }
 
 header .form .search-btn i {
@@ -383,8 +391,16 @@ header .form .search-btn i {
     right: -20px;
 }
 
+@media(max-width:767px) {
+    .full-width {
+
+        width: 330px !important;
+    }
+
+}
+
 .full-width {
-    width: 330px;
+    width: 400px;
 }
 
 
