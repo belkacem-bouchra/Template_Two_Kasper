@@ -133,7 +133,7 @@ setInterval(function () {
     checker();
 }, 5000);
 
-// Change portfolio content after clicking on portfolio list
+// Change portfolio content after clicking on Portfolio list
 let portfolio = document.querySelector('.portfolio-content'),
     portfolioImage = document.querySelector('.images-container'),
     portfolioBox = Array.from(document.querySelectorAll('.portfolio-content .images-container')),
