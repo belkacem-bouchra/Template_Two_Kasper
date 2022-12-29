@@ -134,42 +134,88 @@ setInterval(function () {
 }, 5000);
 
 // Change portfolio content after clicking on Portfolio list
-let portfolio = document.querySelector('.portfolio-content'),
-    portfolioImage = document.querySelector('.images-container'),
-    portfolioBox = Array.from(document.querySelectorAll('.portfolio-content .images-container')),
-    nbrBoxes = portfolioBox.length,
-    currentItem = 1,
-    portfolioList = document.querySelector('.list'),
-    portfolioItem = Array.from(document.querySelectorAll('.list li'));
-portfolio.offsetHeight = parseInt(`${portfolioImage.offsetHeight}`);
-check();
-for (i = 0; i < nbrBoxes; i++) {
-    portfolioItem[i].setAttribute('item-index', i + 1);
+let mainPort = document.querySelector('.portfolio');
+let portList = Array.from(document.querySelectorAll('.portfolio-list li')),
+    portContainer = document.querySelector('.portfolio-container'),
+    portBox = Array.from(document.querySelectorAll('.portfolio-box')),
+    portListNbr = portList.length,
+    portBoxNbr = portBox.length,
+    currentPort = 1;
+for (i = 0; i < portListNbr; i++) {
+    portBox.forEach(function (box) {
+        portContainer.style.height = portBox[i].offsetHeight.toString() + 'px'
+    })
 }
-for (i = 0; i < nbrBoxes; i++) {
-    portfolioItem[i].onclick = function () {
-        currentItem = parseInt(this.getAttribute('item-index'));
-        console.log(currentItem);
-        check();
+
+window.onresize = function () {
+    for (i = 0; i < portListNbr; i++) {
+        portBox.forEach(function (box) {
+            portContainer.style.height = portBox[i].offsetHeight.toString() + 'px'
+        })
     }
 }
-function check() {
-    removeActiveLi();
-    removeVisibleBox();
-    portfolioBox[currentItem - 1].classList.add('visible-box');
-    portfolioList.children[currentItem - 1].classList.add('active-li');
+for (i = 0; i < portListNbr; i++) {
+    portList[i].setAttribute('data-port', i + 1)
 }
-checker();
-function removeActiveLi() {
-    portfolioItem.forEach(function (item) {
-        item.classList.remove('active-li');
+for (i = 0; i < portListNbr; i++) {
+    portList[i].addEventListener('click', function () {
+        currentPort = parseInt(this.getAttribute('data-port'));
+        portCheck();
     })
-};
-function removeVisibleBox() {
-    portfolioBox.forEach(function (box) {
+}
+function portCheck() {
+    removePortLi();
+    remmoveVisibleBox();
+    portList[currentPort - 1].classList.add('active-li');
+    portBox[currentPort - 1].classList.add('visible-box');
+}
+portCheck();
+function removePortLi() {
+    portList.forEach(function (li) {
+        li.classList.remove('active-li');
+    })
+}
+function remmoveVisibleBox() {
+    portBox.forEach(function (box) {
         box.classList.remove('visible-box');
     })
-};
+}
+// let portfolio = document.querySelector('.portfolio-content'),
+//     portfolioImage = document.querySelector('.images-container'),
+//     portfolioBox = Array.from(document.querySelectorAll('.portfolio-content .images-container')),
+//     nbrBoxes = portfolioBox.length,
+//     currentItem = 1,
+//     portfolioList = document.querySelector('.list'),
+//     portfolioItem = Array.from(document.querySelectorAll('.list li'));
+// portfolio.offsetHeight = parseInt(`${portfolioImage.offsetHeight}`);
+// check();
+// for (i = 0; i < nbrBoxes; i++) {
+//     portfolioItem[i].setAttribute('item-index', i + 1);
+// }
+// for (i = 0; i < nbrBoxes; i++) {
+//     portfolioItem[i].onclick = function () {
+//         currentItem = parseInt(this.getAttribute('item-index'));
+//         console.log(currentItem);
+//         check();
+//     }
+// }
+// function check() {
+//     removeActiveLi();
+//     removeVisibleBox();
+//     portfolioBox[currentItem - 1].classList.add('visible-box');
+//     portfolioList.children[currentItem - 1].classList.add('active-li');
+// }
+// checker();
+// function removeActiveLi() {
+//     portfolioItem.forEach(function (item) {
+//         item.classList.remove('active-li');
+//     })
+// };
+// function removeVisibleBox() {
+//     portfolioBox.forEach(function (box) {
+//         box.classList.remove('visible-box');
+//     })
+// };
 
 // Change testimonials content
 
