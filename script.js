@@ -4,20 +4,6 @@ window.onload = function () {
     window.scrollTo(0, 0);
 }
 
-// Toggle class for burger
-
-let mainHeader = document.querySelector('header'),
-    burger = document.querySelector('.toggle-btn'),
-    openIt = document.querySelector('.toggle-menu'),
-    closeIt = document.querySelector('.close-menu'),
-    menu = document.querySelector('.menu');
-
-burger.addEventListener('click', function () {
-    mainHeader.classList.toggle('full-header');
-    menu.classList.toggle('show-menu');
-    closeIt.classList.toggle('close');
-    openIt.classList.toggle('close')
-});
 
 // Show and hide search input
 
@@ -41,8 +27,36 @@ searchBtn.addEventListener('click', function () {
         circle.style.setProperty('--changeOpacity', '0');
     }
     searchInput.classList.toggle('show-input');
+    if (menu.classList.contains('show-menu') == true) {
+        menu.classList.remove('show-menu');
+        openIt.classList.remove('close');
+        closeIt.classList.add('close');
+        mainHeader.classList.remove('full-header');
+    }
+
 });
 
+// Toggle class for burger
+
+let mainHeader = document.querySelector('header'),
+    burger = document.querySelector('.toggle-btn'),
+    openIt = document.querySelector('.toggle-menu'),
+    closeIt = document.querySelector('.close-menu'),
+    menu = document.querySelector('.menu');
+
+burger.addEventListener('click', function () {
+    mainHeader.classList.toggle('full-header');
+    menu.classList.toggle('show-menu');
+    closeIt.classList.toggle('close');
+    openIt.classList.toggle('close');
+    if (searchInput.classList.contains('show-input') == true) {
+        searchInput.classList.remove('show-input');
+        circle.classList.remove('full-width');
+        circle.style.setProperty('--changeOpacity', '0');
+        searchIcon.classList.remove('new-search-btn');
+        xSearch.classList.add('close-search');
+    }
+});
 // Change style of navigation links after clicking
 
 let navItem = Array.from(document.querySelectorAll('.menu li a')),
@@ -59,12 +73,16 @@ for (i = 0; i < navLength; i++) {
 }
 function navCheck() {
     removeActiveNav();
+    mainHeader.classList.remove('full-header');
+    openIt.classList.remove('close');
+    closeIt.classList.add('close');
+    menu.classList.remove('show-menu');
     navItem[currentNav - 1].classList.add('active-nav');
 }
 navCheck();
 function removeActiveNav() {
     navItem.forEach(function (nav) {
-        nav.classList.remove('active-nav')
+        nav.classList.remove('active-nav');
     })
 }
 

@@ -310,11 +310,9 @@ header .form {
     margin-left: 40px;
 }
 
-
-
 .new-search-btn {
     border-left: none !important;
-    color: var(--main-color) !important;
+    color: white !important;
     z-index: 10;
     right: 425px !important;
 
@@ -324,7 +322,6 @@ header .form {
     .new-search-btn {
         top: 55px !important;
         right: 335px !important;
-
     }
 }
 
@@ -356,7 +353,8 @@ header .form .search-btn i {
     width: 0;
     height: 40px;
     transform: translateY(-50%);
-    background-color: white;
+    background-color: rgb(15 116 143);
+    box-shadow: 0px 5px 12px -9px #00000052;
     z-index: 5;
     transition: 0.5s ease;
 }
@@ -378,7 +376,7 @@ header .form .search-btn i {
     height: 40px;
     border-radius: 50%;
     opacity: var(--changeOpacity, 0);
-    background-color: white;
+    background-color: rgb(15 116 143);
     transition: 0.5s ease;
 }
 
@@ -392,16 +390,13 @@ header .form .search-btn i {
 
 @media(max-width:767px) {
     .full-width {
-
         width: 330px !important;
     }
-
 }
 
 .full-width {
     width: 400px;
 }
-
 
 input[type=search] {
     opacity: 0;
@@ -415,8 +410,13 @@ input[type=search] {
     z-index: 6;
     width: 370px;
     height: 30px;
+    color: white;
     transform: translateY(-50%);
     transition: 0.5s ease;
+}
+
+input[type=search]::placeholder {
+    color: white;
 }
 
 @media (max-width:767px) {
