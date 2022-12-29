@@ -175,7 +175,6 @@ header {
     width: 100%;
     height: fit-content;
     z-index: 3;
-    /* overflow: hidden; */
     transition: all 0.5s ease;
 }
 
@@ -707,24 +706,17 @@ input[type=search] {
     color: white;
 }
 
-
-.portfolio-container {
-    position: relative;
-}
-
 .portfolio-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-wrap: wrap;
+    display: none;
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transition: 0.5s ease;
+    transition: 0.5s;
 }
 
 .visible-box {
+    display: flex;
+    flex-wrap: wrap;
     opacity: 1;
     visibility: visible;
 }
@@ -760,34 +752,6 @@ input[type=search] {
     transform: scale(1.1) rotate(3deg);
 }
 
-
-/* .images-container.visible-box {
-    visibility: visible;
-    opacity: 1;
-} */
-
-/* .images-container .box {
-    position: relative;
-    overflow: hidden;
-}
-
-@media (min-width: 768px) {
-    .images-container .box {
-        flex-basis: 50%;
-    }
-}
-
-@media (min-width: 1199px) {
-    .images-container .box {
-        flex-basis: 25%;
-    }
-} */
-
-/* .images-container .box img {
-    max-width: 100%;
-    transition: 0.3s;
-} */
-
 .portfolio-text {
     position: absolute;
     bottom: -100%;
@@ -801,10 +765,6 @@ input[type=search] {
 .portfolio-nth:hover .portfolio-text {
     bottom: 0;
 }
-
-/* .images-container .box:hover img {
-    transform: scale(1.1) rotate(3deg);
-} */
 
 .portfolio-text h4 {
     font-weight: normal;
@@ -913,7 +873,6 @@ input[type=search] {
 
 @media (max-width:767px) {
     .about img {
-        /* transform: translateY(0px); */
         width: 100%;
     }
 }
@@ -998,7 +957,6 @@ input[type=search] {
 
 /* Start Skills */
 
-
 .skills .container {
     display: flex;
     justify-content: space-between;
@@ -1031,9 +989,12 @@ input[type=search] {
     flex-basis: 45%;
 }
 
-.our-skills {
-    order: -1;
+@media(max-width:767px) {
+    .our-skills {
+        order: -1;
+    }
 }
+
 
 @media (max-width:767px) {
     .testimonials {
