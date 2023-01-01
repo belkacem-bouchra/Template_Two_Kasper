@@ -4,7 +4,6 @@ window.onload = function () {
     window.scrollTo(0, 0);
 }
 
-
 // Show and hide search input
 
 let searchInput = document.querySelector('.search-input'),
@@ -33,7 +32,6 @@ searchBtn.addEventListener('click', function () {
         closeIt.classList.add('close');
         mainHeader.classList.remove('full-header');
     }
-
 });
 
 // Toggle class for burger
@@ -57,6 +55,17 @@ burger.addEventListener('click', function () {
         xSearch.classList.add('close-search');
     }
 });
+
+// Get variables to let the header fixed after scrolling
+
+let fullBody = document.querySelector('body'),
+    cont = document.querySelector('header .container'),
+    borderHeight = window.getComputedStyle(cont, "::after");
+
+// Get All Sections
+
+var sections = Array.from(document.querySelectorAll('.section'));
+
 // Change style of navigation links after clicking
 
 let navItem = Array.from(document.querySelectorAll('.menu li a')),
@@ -73,6 +82,7 @@ for (i = 0; i < navLength; i++) {
 }
 function navCheck() {
     removeActiveNav();
+    // Hide Nav Menu oncklick on Nav Link -- Mobile Version
     mainHeader.classList.remove('full-header');
     openIt.classList.remove('close');
     closeIt.classList.add('close');
@@ -233,12 +243,6 @@ setInterval(function () {
     theChecker();
 }, 5000);
 
-// Get variables to let the header fixed after scrolling
-
-let fullBody = document.querySelector('body'),
-    cont = document.querySelector('header .container'),
-    borderHeight = window.getComputedStyle(cont, "::after");
-
 // Get variables to start counting after scrolling to stats section
 
 let statsSection = document.querySelector('.stats'),
@@ -275,6 +279,7 @@ let skillSection = document.querySelector('.skills'),
 // Execute functions : fixed header, count statistics, change skills %
 
 fullBody.onscroll = function () {
+    // Fixed Header Function
     if (window.scrollY == 0) {
         mainHeader.classList.remove('fixed-header');
         cont.style.setProperty('--changeHeight', '1px');
@@ -283,6 +288,16 @@ fullBody.onscroll = function () {
         mainHeader.classList.add('fixed-header');
         cont.style.setProperty('--changeHeight', '0px');
     }
+    // Change Nav Links Style On Scroll
+    var scrollPosition = document.documentElement.scrollTop;
+    sections.forEach(function (sect) {
+        if (scrollPosition >= sect.offsetTop && scrollPosition < sect.offsetTop + sect.offsetHeight) {
+            var currentSect = sect.attributes.id.value;
+            removeActiveNav();
+            addActiveClasse(currentSect);
+        }
+    })
+    // Count Statistics Function
     if (window.scrollY >= statsSection.offsetTop - 100) {
         if (!started) {
             for (i = 0; i < statsNumb.length; i++) {
@@ -291,13 +306,17 @@ fullBody.onscroll = function () {
         }
         started = true;
     }
+    // Change Skills %
     if (window.scrollY >= skillSection.offsetTop - 100) {
         for (i = 0; i < progSpan.length; i++) {
             progSpan[i].style.width = `${parseInt(progSpan[i].getAttribute('data-progress'))}%`;
         }
     }
 }
-
+var addActiveClasse = function (id) {
+    var selector = `ul a[href="#${id}"]`;
+    document.querySelector(selector).classList.add('active-nav');
+}
 // Come back to top after clicking on button
 
 let backUpBtn = document.querySelector('.scroll-btn');
