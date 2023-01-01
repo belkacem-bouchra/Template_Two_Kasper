@@ -291,10 +291,13 @@ fullBody.onscroll = function () {
     // Change Nav Links Style On Scroll
     var scrollPosition = document.documentElement.scrollTop;
     sections.forEach(function (sect) {
-        if (scrollPosition >= sect.offsetTop && scrollPosition < sect.offsetTop + sect.offsetHeight) {
+        if (scrollPosition >= sect.offsetTop - 70 && scrollPosition < sect.offsetTop + sect.offsetHeight) {
             var currentSect = sect.attributes.id.value;
             removeActiveNav();
             addActiveClasse(currentSect);
+            console.log('scrollPosition = ', scrollPosition);
+            console.log('sect.offsetTop = ', sect.offsetTop);
+            console.log('sect.offsetTop + sect.offsetHeight = ', sect.offsetTop + sect.offsetHeight);
         }
     })
     // Count Statistics Function
