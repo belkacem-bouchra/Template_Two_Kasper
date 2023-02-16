@@ -295,9 +295,6 @@ fullBody.onscroll = function () {
             var currentSect = sect.attributes.id.value;
             removeActiveNav();
             addActiveClasse(currentSect);
-            console.log('scrollPosition = ', scrollPosition);
-            console.log('sect.offsetTop = ', sect.offsetTop);
-            console.log('sect.offsetTop + sect.offsetHeight = ', sect.offsetTop + sect.offsetHeight);
         }
     })
     // Count Statistics Function
